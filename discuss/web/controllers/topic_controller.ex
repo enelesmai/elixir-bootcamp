@@ -1,11 +1,12 @@
 defmodule Discuss.TopicController do
     use Discuss.Web, :controller
-
+  
     def new(conn, params) do
-        IO.puts "++++"
+        IO.puts "+++++"
         IO.inspect conn
-        IO.puts "+++"
+        IO.puts "+++++"
         IO.inspect params
-        IO.puts "+++"
+        IO.puts "+++++"
     end
-end
+  end
+  
