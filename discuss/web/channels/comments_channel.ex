@@ -4,8 +4,8 @@ defmodule Discuss.CommentsChannel do
 
   alias Discuss.{Topic, Comment}
 
+  #comments:6
   def join("comments:" <> topic_id, _params, socket) do
-    #comments:6
     topic_id = String.to_integer(topic_id)
     topic = Topic
       |> Repo.get(topic_id)
@@ -16,9 +16,10 @@ defmodule Discuss.CommentsChannel do
 
   def handle_in(name, %{"content" => content}, socket) do
     topic = socket.assigns.topic;
-    
+    user_id = socket.assigns.user_id;
+
     changeset = topic
-    |> build_assoc(:comments)
+    |> build_assoc(:comments, user_id: user_id)
     |> Comment.changeset(%{content: content})
 
     case Repo.insert(changeset) do
