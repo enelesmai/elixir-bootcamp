@@ -9,7 +9,7 @@ defmodule Discuss.Comment do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast (params, [:content])
+    |> cast(params, [:content])
     |> validate_required([:content])
   end
 end
