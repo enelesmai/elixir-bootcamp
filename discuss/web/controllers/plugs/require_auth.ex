@@ -6,7 +6,7 @@ defmodule Discuss.Plugs.RequireAuth do
 
   def init(_params) do
   end
-
+  
   def call(conn, _params) do
     if conn.assigns[:user] do
       conn
@@ -14,7 +14,7 @@ defmodule Discuss.Plugs.RequireAuth do
       conn
       |> put_flash(:error, "You must be logged in.")
       |> redirect(to: Helpers.topic_path(conn, :index))
-      |> halth()
+      |> halt()
     end
   end
 end
